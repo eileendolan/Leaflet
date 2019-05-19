@@ -107,12 +107,12 @@ function createMap(earthquakes) {
 
   // color function to be used when creating the legend
   function getColor(d) {
-    return d > 5 ? '#ff3333' :
-           d > 4  ? '#ff6633' :
-           d > 3  ? '#ff9933' :
-           d > 2  ? '#ffcc33' :
-           d > 1  ? '#ffff33' :
-                    '#ccff33';
+    return d > 5 ? '#FF3D33' :
+           d > 4  ? '#EEA30F' :
+           d > 3  ? '#E9FF33' :
+           d > 2  ? 'ABFF33' :
+           d > 1  ? '#33FF93' :
+                    '#FF33B9';
   }
 
   // Add legend to the map
