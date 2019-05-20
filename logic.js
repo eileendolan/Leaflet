@@ -105,7 +105,7 @@ function createMap(earthquakes) {
       37.09, -95.71
     ],
     zoom: 5,
-    layers: [streetmap, earthquakes, satellite]
+    layers: [streetmap, earthquakes]
   });
 
   // Create a layer control
