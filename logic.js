@@ -63,21 +63,26 @@ function createFeatures(earthquakeData) {
 // define a function to create a map
 function createMap(earthquakes) {
 
-     // Define map layers
-  var satelliteMap = L.tileLayer("https://api.mapbox.com/styles/v1/ruchichandra/cjakahzysbllh2rl87e2dg27b/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicnVjaGljaGFuZHJhIiwiYSI6ImNqYzJ2dXlvcDA2a2gycW4zb2RkOXpmZjgifQ.EABSXTlj3gpJcvk8zJL2DQ");
-
-  var outdoorMap = L.tileLayer("https://api.mapbox.com/styles/v1/ruchichandra/cjc2vqswz0efp2rpfjnhunj68/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicnVjaGljaGFuZHJhIiwiYSI6ImNqYzJ2dXlvcDA2a2gycW4zb2RkOXpmZjgifQ.EABSXTlj3gpJcvk8zJL2DQ");
-
-  var lightMap = L.tileLayer("https://api.mapbox.com/styles/v1/ruchichandra/cjc2wvic01j3l2rpbfsypf8qk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicnVjaGljaGFuZHJhIiwiYSI6ImNqYzJ2dXlvcDA2a2gycW4zb2RkOXpmZjgifQ.EABSXTlj3gpJcvk8zJL2DQ");
-
+   // Define streetmap and darkmap layers
+    var outdoors = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
+      "access_token=pk.eyJ1IjoidGJlcnRvbiIsImEiOiJjamRoanlkZXIwenp6MnFuOWVsbGo2cWhtIn0.zX40X0x50dpaN96rKQKarw." +
+      "T6YbdDixkOBWH_k9GbS8JQ");
   
-  // Define a baseMaps object to hold our base layers
-  var baseMaps = {
-    "Satellite Map": satelliteMap,
-    "Outdoor Map": outdoorMap,
-    "Light Map": lightMap
-  };
+    var satellite = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?" +
+      "access_token=pk.eyJ1IjoidGJlcnRvbiIsImEiOiJjamRoanlkZXIwenp6MnFuOWVsbGo2cWhtIn0.zX40X0x50dpaN96rKQKarw." +
+      "T6YbdDixkOBWH_k9GbS8JQ");
 
+    var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?" +
+      "access_token=pk.eyJ1IjoidGJlcnRvbiIsImEiOiJjamRoanlkZXIwenp6MnFuOWVsbGo2cWhtIn0.zX40X0x50dpaN96rKQKarw." +
+      "T6YbdDixkOBWH_k9GbS8JQ");
+  
+    // Define a baseMaps object to hold our base layers
+    // Pass in our baseMaps 
+    var baseMaps = {
+      "Outdoors": outdoors,
+      "Satellite": satellite,
+      "Dark Map": darkmap
+    };  
   // Create overlay object to hold our overlay layer
   var overlayMaps = {
     Earthquakes: earthquakes
@@ -89,7 +94,7 @@ function createMap(earthquakes) {
       37.09, -95.71
     ],
     zoom: 5,
-    layers: [lightMap, earthquakes]
+    layers: [outdoors, earthquakes]
   });
 
   // Create a layer control
