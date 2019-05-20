@@ -19,7 +19,7 @@ function createFeatures(earthquakeData) {
 
   // Radius size based on magnitude
   function radiusSize(magnitude) {
-    return magnitude * 20000;
+    return magnitude * 3;
   }
 
   // Color of circles based on magnitude 
