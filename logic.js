@@ -60,27 +60,23 @@ function createFeatures(earthquakeData) {
   // Sending our earthquakes layer to the createMap function
   createMap(earthquakes);
 }
-
+// define a function to create a map
 function createMap(earthquakes) {
- 
-// define a function to create the map
-function createMap() {
-    // define street, outdoor, satellite maps
-    var satellite = L.tileLayer("https://api.mapbox.com/styles/v1/cherngywh/cjfkdlw8x057v2smizo9hqksx/tiles/256/{z}/{x}/{y}?" +
-        "access_token=pk.eyJ1IjoiY2hlcm5neXdoIiwiYSI6ImNqZXZvcGhhYTcxdm4ycm83bjY1bnV3amgifQ.MOA-PIHTOV90Ql8_Tg2bvQ");
 
-    var dark = L.tileLayer("https://api.mapbox.com/styles/v1/cherngywh/cjfon2bd904iy2spdjzs1infc/tiles/256/{z}/{x}/{y}?" +
-    "access_token=pk.eyJ1IjoiY2hlcm5neXdoIiwiYSI6ImNqZXZvcGhhYTcxdm4ycm83bjY1bnV3amgifQ.MOA-PIHTOV90Ql8_Tg2bvQ");
+     // Define map layers
+  var satelliteMap = L.tileLayer("https://api.mapbox.com/styles/v1/ruchichandra/cjakahzysbllh2rl87e2dg27b/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicnVjaGljaGFuZHJhIiwiYSI6ImNqYzJ2dXlvcDA2a2gycW4zb2RkOXpmZjgifQ.EABSXTlj3gpJcvk8zJL2DQ");
 
-    var street = L.tileLayer("https://api.mapbox.com/styles/v1/cherngywh/cjfokxy6v0s782rpc1bvu8tlz/tiles/256/{z}/{x}/{y}?" +
-        "access_token=pk.eyJ1IjoiY2hlcm5neXdoIiwiYSI6ImNqZXZvcGhhYTcxdm4ycm83bjY1bnV3amgifQ.MOA-PIHTOV90Ql8_Tg2bvQ");
+  var outdoorMap = L.tileLayer("https://api.mapbox.com/styles/v1/ruchichandra/cjc2vqswz0efp2rpfjnhunj68/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicnVjaGljaGFuZHJhIiwiYSI6ImNqYzJ2dXlvcDA2a2gycW4zb2RkOXpmZjgifQ.EABSXTlj3gpJcvk8zJL2DQ");
 
-    // define a baselayer object to hold our base layer objects
-    var baseLayers = {
-        "Street": street,     
-        "Dark": dark,
-        "Satellite": satellite
-    };
+  var lightMap = L.tileLayer("https://api.mapbox.com/styles/v1/ruchichandra/cjc2wvic01j3l2rpbfsypf8qk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicnVjaGljaGFuZHJhIiwiYSI6ImNqYzJ2dXlvcDA2a2gycW4zb2RkOXpmZjgifQ.EABSXTlj3gpJcvk8zJL2DQ");
+
+  
+  // Define a baseMaps object to hold our base layers
+  var baseMaps = {
+    "Satellite Map": satelliteMap,
+    "Outdoor Map": outdoorMap,
+    "Light Map": lightMap
+  };
 
   // Create overlay object to hold our overlay layer
   var overlayMaps = {
@@ -93,7 +89,7 @@ function createMap() {
       37.09, -95.71
     ],
     zoom: 5,
-    layers: [street, earthquakes]
+    layers: [lightMap, earthquakes]
   });
 
   // Create a layer control
